@@ -40,6 +40,10 @@ INSTALLED_APPS = [
 
     # Own apps
     'pages',
+    'campeonatos',
+    'jogadores',
+    'equipas',
+    'jogos',
 ]
 
 MIDDLEWARE = [

@@ -1,0 +1,26 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<table class="container">
+	<thead>
+		<tr>
+			<th><h1>Nome</h1></th>
+			<th><h1>Época</h1></th>
+			<th><h1>Modalidade</h1></th>
+			<th><h1>Data de Início</h1></th>
+			<th><h1>Data de Fim</h1></th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for c in objects_campeonatos %}
+		<tr>
+			<td>{{ c.nome }}</td>
+			<td>{{ c.epoca }}</td>
+			<td>{{ c.modalidade.designacao }}</td>
+			<td>{{ c.datainicio }}</td>
+			<td>{{ c.datafim }}</td>
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>
+{% endblock %}

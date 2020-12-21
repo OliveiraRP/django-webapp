@@ -1,0 +1,22 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<table class="container">
+	<thead>
+		<tr>
+			<th><h1>Nome</h1></th>
+			<th><h1>Género</h1></th>
+			<th><h1>Data de Nascimento</h1></th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for j in objects_jogadores %}
+		<tr>
+			<td>{{ j.nome }}</td>
+			<td>{{ j.genero }}</td>
+			<td>{{ j.datanasc }}</td>
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>
+{% endblock %}

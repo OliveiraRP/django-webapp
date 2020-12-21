@@ -16,9 +16,17 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from pages.views import table_view
+from pages.views import index_view
+from campeonatos.views import table_campeonatos_view
+from jogos.views import table_jogos_view
+from equipas.views import table_equipas_view
+from jogadores.views import table_jogadores_view
 
 urlpatterns = [
-	path('', table_view, name='table'),
+	path('', index_view, name='index'),
+	path('campeonatos', table_campeonatos_view, name='campeonatos'),
+    path('jogos', table_jogos_view, name='jogos'),
+    path('equipas', table_equipas_view, name='equipas'),
+    path('jogadores', table_jogadores_view, name='jogadores'),
     path('admin/', admin.site.urls),
 ]

@@ -1,0 +1,28 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<table class="container">
+	<thead>
+		<tr>
+			<th><h1>Campeonato</h1></th>
+			<th><h1>Equipas</h1></th>
+			<th><h1>Campo</h1></th>
+			<th><h1>Tempo de Jogo</h1></th>
+			<th><h1>Espetadores</h1></th>
+			<th><h1>Dia do Jogo</h1></th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for j in objects_jogos %}
+		<tr>
+			<td>{{ j.campeonato.nome }}</td>
+			<td>Null VS Null</td>
+			<td>{{ j.campo }}</td>
+			<td>{{ j.tempojogo }}</td>
+			<td>{{ j.espetadores }}</td>
+			<td>{{ j.diajogo }}</td>
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>
+{% endblock %}
