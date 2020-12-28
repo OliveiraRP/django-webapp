@@ -117,16 +117,6 @@ class Migration(migrations.Migration):
             },
         ),
         migrations.CreateModel(
-            name='Convocatoria',
-            fields=[
-                ('equipa', models.OneToOneField(on_delete=django.db.models.deletion.DO_NOTHING, primary_key=True, serialize=False, to='jogos.equipa')),
-            ],
-            options={
-                'db_table': 'convocatoria',
-                'managed': False,
-            },
-        ),
-        migrations.CreateModel(
             name='Plantel',
             fields=[
                 ('equipa', models.OneToOneField(on_delete=django.db.models.deletion.DO_NOTHING, primary_key=True, serialize=False, to='jogos.equipa')),

@@ -11,3 +11,13 @@ def table_jogadores_view(request, *args, **kwargs):
 	}
 
 	return render(request, "jogadores/table.html", context)
+
+
+def dynamic_jogador_view(request, id):
+
+	jogador = Jogador.objects.get(jogador_id=id)
+	context = {
+		"jogador": jogador
+	}
+
+	return render(request, "jogadores/perfil.html", context)

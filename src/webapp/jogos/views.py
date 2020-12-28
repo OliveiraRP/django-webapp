@@ -4,6 +4,7 @@ from .models import Jogo
 # Create your views here.
 def table_jogos_view(request, *args, **kwargs):
 
+	
 	objects_jogos = Jogo.objects.raw('SELECT * FROM Jogo')
 
 	context = {

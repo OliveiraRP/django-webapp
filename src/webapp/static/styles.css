@@ -9,6 +9,10 @@ body {
   background-color:#1a2130;
 }
 
+ a {
+  color: #A7A1AE; text-decoration: none;
+}
+
 h1 {
   font-size:3em; 
   font-weight: 300;
@@ -81,7 +85,9 @@ h2 a {
 	  background-color: #1F2739;
 }
 
-.container td:first-child { font-weight: bold; }
+.container td:first-child {
+    font-weight: bold;
+}
 
 @media (max-width: 800px) {
 .container td:nth-child(4),

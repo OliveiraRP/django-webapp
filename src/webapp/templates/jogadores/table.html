@@ -12,7 +12,7 @@
 	<tbody>
 		{% for j in objects_jogadores %}
 		<tr>
-			<td>{{ j.nome }}</td>
+			<td><a href="{{ j.jogador_id }}"> {{ j.nome }} </a></td>
 			<td>{{ j.genero }}</td>
 			<td>{{ j.datanasc }}</td>
 		</tr>
