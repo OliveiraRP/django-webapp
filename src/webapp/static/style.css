@@ -14,6 +14,52 @@ a {
   text-decoration: none;
 }
 
+
+.j1 {
+  font-size:3em; 
+  font-weight: 300;
+  line-height:1em;
+  margin: 0 auto;
+  width: 80%;
+  text-align: left;
+  display: block;
+  color: #4DC3FA;
+  padding-bottom: 0.4em;
+}
+
+.j2 {
+  margin: 0 auto;
+  width: 80%;
+  text-align: left;
+  display: block;
+  padding-bottom: 4em;
+}
+
+
+.j4 {
+  width:25%
+}
+.j4 th  {
+
+  display: block;
+  font-size: 1.17em;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: bold;
+}
+.j4 td  {
+
+ display: block;
+ font-size: 1em;
+
+  margin-left: 0;
+  margin-right: 0;
+
+}
+
+
 h1 {
   font-size:3em; 
   font-weight: 300;

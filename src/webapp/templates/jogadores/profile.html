@@ -1,7 +1,74 @@
 {% extends 'index.html' %}
 
 {% block content %}
-{{ jogador.nome }}
-{{ jogador.genero }}
-{{ jogador.datanasc }}
+
+<p class="j1">{{ jogador.nome }}</p>
+
+<p class="j2">{{ jogador.genero }} | {{ jogador.datanasc }}</p>
+
+
+<h3>Equipas:</h3><br>
+<ul class="j2">
+	<li>Equipa A</li>
+	<li>Equipa B</li>
+</ul>
+
+
+<h3>Estatísticas:</h3><br>
+
+<b style="margin-left:10%">Futebol</b>
+<table class="container">
+  	<tr>
+ 		<th>Equipa</th>
+    	<th>Partidas disputadas</th>
+	 	<th>Golos</th>
+	 	<th>Cartões Amarelos</th>
+	 	<th>Cartões Vermelhos</th>
+  	</tr>
+  	<tr>
+		<td>Equipa A</td>
+		<td>1</td>
+		<td>3</td>
+		<td>1</td>
+		<td>0</td>
+  	</tr>
+	<tr>
+		<td>Equipa B</td>
+		<td>2</td>
+		<td>0</td>
+		<td>1</td>
+		<td>1</td>
+	</tr>
+</table>
+
+
+<h3>Registo de Eventos:</h3><br>
+
+<table class="container">
+	<tr>
+		<th>Jogo</th>
+	    <th>Tipo</th>
+		<th>Parte do Jogo</th>
+		<th>Data</th>
+		<th>Modalidade</th>
+	</tr>
+	<tr>
+		<td>Equipa A VS Equipa B</td>
+		<td>Cartão Amarelo</td>
+		<td>1a Parte</td>
+		<td>27/3/2020</td>
+		<td>Futebol</td>
+	</tr>
+	<tr>
+		<td>Equipa A VS Equipa B</td>
+		<td>Golo</td>
+		<td>2a Parte</td>
+		<td>27/3/2020</td>
+		<td>Futebol</td>
+	</tr>
+</table>
+
+
+
+
 {% endblock %}
