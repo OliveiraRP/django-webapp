@@ -20,7 +20,7 @@ from pages.views import index_view
 from campeonatos.views import table_campeonatos_view
 from jogos.views import table_jogos_view
 from equipas.views import table_equipas_view
-from jogadores.views import table_jogadores_view, dynamic_jogador_view
+from jogadores.views import table_jogadores_view, profile_jogador_view, new_jogador_view
 
 urlpatterns = [
 	path('', index_view, name='index'),
@@ -28,6 +28,7 @@ urlpatterns = [
     path('jogos/', table_jogos_view, name='jogos'),
     path('equipas/', table_equipas_view, name='equipas'),
     path('jogadores/', table_jogadores_view, name='jogadores'),
-    path('jogadores/<int:id>', dynamic_jogador_view, name="jogador"),
+    path('jogadores/<int:id>', profile_jogador_view, name="perfil_jogador"),
+    path('jogadores/novo', new_jogador_view, name="novo_jogador"),
     path('admin/', admin.site.urls),
 ]

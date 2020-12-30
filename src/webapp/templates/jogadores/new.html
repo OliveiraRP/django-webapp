@@ -1,0 +1,12 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+<h3> Novo Jogador </h3>
+
+<form method="POST"> {% csrf_token %}
+	{{ form.as_p }}
+	<input class="modelForm" type='submit' value='Guardar'/>
+</form>
+
+{% endblock %}
