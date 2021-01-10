@@ -9,66 +9,172 @@
 
 <h3>Equipas:</h3><br>
 <ul class="j2">
-	<li>Equipa A</li>
-	<li>Equipa B</li>
+	{% if not lista_equipas %}
+		Este jogador não joga em nenhuma equipa
+	{% endif %}
+	{% for equipa in lista_equipas %}
+		<li><b>{{ equipa.modalidade }}:</b> {{ equipa.equipa_nome }}</li>
+	{% endfor %}
 </ul>
 
 
 <h3>Estatísticas:</h3><br>
 
+<!-- Table Futebol -->
+{% if stats_futebol %}
 <b style="margin-left:10%">Futebol</b>
 <table class="container">
   	<tr>
+ 		<th>Ano</th>
  		<th>Equipa</th>
     	<th>Partidas disputadas</th>
 	 	<th>Golos</th>
 	 	<th>Cartões Amarelos</th>
 	 	<th>Cartões Vermelhos</th>
   	</tr>
-  	<tr>
-		<td>Equipa A</td>
-		<td>1</td>
-		<td>3</td>
-		<td>1</td>
-		<td>0</td>
-  	</tr>
+  	{% for stat in stats_futebol %}
 	<tr>
-		<td>Equipa B</td>
-		<td>2</td>
-		<td>0</td>
-		<td>1</td>
-		<td>1</td>
-	</tr>
+		<td>{{ stat.ano }}</td>
+		<td>{{ stat.equipa.nome }}</td>
+		<td>{{ stat.num_jogos }}</td>
+		<td>{{ stat.num_golos }}</td>
+		<td>{{ stat.num_car_ama }}</td>
+		<td>{{ stat.num_car_ver }}</td>
+  	</tr>
+	{% endfor %}
 </table>
+{% endif %}
+
+
+<!-- Table Basquetebol -->
+{% if stats_basquetebol %}
+<b style="margin-left:10%">Basquetebol</b>
+<table class="container">
+	<tr>
+		<th>Ano</th>
+		<th>Equipa</th>
+		<th>Partidas disputadas</th>
+		<th>Cestos - 1 ponto</th>
+		<th>Cestos - 2 pontos</th>
+		<th>Cestos - 3 pontos</th>
+		<th>Exclusões</th>
+	</tr>
+	{% for stat in stats_basquetebol %}
+	<tr>
+		<td>{{ stat.ano }}</td>
+		<td>{{ stat.equipa.nome }}</td>
+		<td>{{ stat.num_jogos }}</td>
+		<td>{{ stat.num_cestos1 }}</td>
+		<td>{{ stat.num_cestos2 }}</td>
+		<td>{{ stat.num_cestos3 }}</td>
+		<td>{{ stat.num_exclusoes }}</td>
+	</tr>
+	{% endfor %}
+</table>
+{% endif %}
+
+
+<!-- Table Voleibol -->
+{% if stats_voleibol %}
+<b style="margin-left:10%">Voleibol</b>
+<table class="container">
+  	<tr>
+ 		<th>Ano</th>
+ 		<th>Equipa</th>
+    	<th>Partidas disputadas</th>
+	 	<th>Pontos marcados</th>
+  	</tr>
+  	{% for stat in stats_voleibol %}
+	<tr>
+		<td>{{ stat.ano }}</td>
+		<td>{{ stat.equipa.nome }}</td>
+		<td>{{ stat.num_jogos }}</td>
+		<td>{{ stat.num_pontos }}</td>
+  	</tr>
+	{% endfor %}
+</table>
+{% endif %}
+
+
+<!-- Table Tenis -->
+{% if stats_tenis %}
+<b style="margin-left:10%">Ténis</b>
+<table class="container">
+	<tr>
+		<th>Ano</th>
+		<th>Partidas disputadas</th>
+		<th>Vitórias</th>
+		<th>Derrotas</th>
+		<th>Points ganhos</th>
+		<th>Games ganhos</th>
+		<th>Sets ganhos</th>
+	</tr>
+	{% for stat in stats_tenis %}
+	<tr>
+		<td>{{ stat.ano }}</td>
+		<td>{{ stat.num_jogos }}</td>
+		<td>{{ stat.num_vitorias }}</td>
+		<td>{{ stat.num_derrotas }}</td>
+		<td>{{ stat.num_points }}</td>
+		<td>{{ stat.num_games }}</td>
+		<td>{{ stat.num_sets }}</td>
+	</tr>
+	{% endfor %}
+</table>
+{% endif %}
+
+
+<!-- Table Andebol -->
+{% if stats_andebol %}
+<b style="margin-left:10%">Andebol</b>
+<table class="container">
+  	<tr>
+ 		<th>Ano</th>
+ 		<th>Equipa</th>
+		<th>Partidas disputadas</th>
+		<th>Golos</th>
+		<th>Cartões Amarelos</th>
+		<th>Cartões Vermelhos</th>
+  	</tr>
+  	{% for stat in stats_andebol %}
+	<tr>
+		<td>{{ stat.ano }}</td>
+		<td>{{ stat.equipa.nome }}</td>
+		<td>{{ stat.num_jogos }}</td>
+		<td>{{ stat.num_golos }}</td>
+		<td>{{ stat.num_car_ama }}</td>
+		<td>{{ stat.num_car_ver }}</td>
+  	</tr>
+	{% endfor %}
+</table>
+{% endif %}
 
 
 <h3>Registo de Eventos:</h3><br>
 
 <table class="container">
 	<tr>
-		<th>Jogo</th>
-	    <th>Tipo</th>
+		<th>Dia do Jogo</th>
+	    <th>Modalidade</th>
+		<th>Tipo do Evento</th>
 		<th>Parte do Jogo</th>
-		<th>Data</th>
-		<th>Modalidade</th>
+		<th>Tempo</th>
 	</tr>
+	{% for e in eventos %}
 	<tr>
-		<td>Equipa A VS Equipa B</td>
-		<td>Cartão Amarelo</td>
-		<td>1a Parte</td>
-		<td>27/3/2020</td>
-		<td>Futebol</td>
+		<td>{{ e.dia }}</td>
+		<td>{{ e.modalidade }}</td>
+		<td>{{ e.evento }}</td>
+		<td>{{ e.parte }}</td>
+		<td>{{ e.tempo }}</td>
 	</tr>
-	<tr>
-		<td>Equipa A VS Equipa B</td>
-		<td>Golo</td>
-		<td>2a Parte</td>
-		<td>27/3/2020</td>
-		<td>Futebol</td>
-	</tr>
+	{% endfor %}
 </table>
 
 
+<form method="POST"> {% csrf_token %}
+	<input class="modelForm" type='submit' value='Apagar jogador'/>
+</form>
 
 
 {% endblock %}

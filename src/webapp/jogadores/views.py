@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django.db import connection
 from .forms import JogadorForm, SearchJogadorForm
 from .models import Jogador
+from equipas.models import Plantel, Equipa
+from jogos.models import Convocatoria, Evento
 
 # Create your views here.
 def table_jogadores_view(request, *args, **kwargs):
@@ -25,7 +27,45 @@ def table_jogadores_view(request, *args, **kwargs):
 def profile_jogador_view(request, id):
 
 	jogador = Jogador.objects.get(jogador_id=id)
+	
+	# List equipas
+	lista_equipas = Plantel.objects.raw("SELECT * FROM get_equipa_by_jogador(" + str(id) + ")")
+
+	# List estatísticas
+	stats_futebol = []
+	stats_basquetebol = []
+	stats_voleibol = []
+	stats_tenis = []
+	stats_andebol = []
+
+	for equipa in lista_equipas:
+		if equipa.modalidade == 'Futebol':
+			stats_futebol = Convocatoria.objects.raw("SELECT * FROM get_estatisticas_jogador_futebol(" + str(id) + ")")
+		elif equipa.modalidade == 'Basquetebol':
+			stats_basquetebol = Convocatoria.objects.raw("SELECT * FROM get_estatisticas_jogador_basquetebol(" + str(id) + ")")
+		elif equipa.modalidade == 'Ténis':
+			stats_tenis = Convocatoria.objects.raw("SELECT * FROM get_estatisticas_jogador_tenis(" + str(id) + ")")
+		elif equipa.modalidade == 'Voleibol':
+			stats_voleibol = Convocatoria.objects.raw("SELECT * FROM get_estatisticas_jogador_voleibol(" + str(id) + ")")
+		elif equipa.modalidade == 'Andebol':
+			stats_andebol = Convocatoria.objects.raw("SELECT * FROM get_estatisticas_jogador_andebol(" + str(id) + ")")
+
+	# List eventos
+	eventos = Evento.objects.raw("SELECT * FROM get_eventos_jogador(" + str(id) + ")")
+
+	# Delete jogador
+	if request.method == 'POST':
+		with connection.cursor() as cursor:
+			cursor.execute("CALL delete_jogador(" + str(id) + ")")
+
 	context = {
+		"lista_equipas": lista_equipas,
+		"stats_futebol": stats_futebol,
+		"stats_basquetebol": stats_basquetebol,
+		"stats_voleibol": stats_voleibol,
+		"stats_tenis": stats_tenis,
+		"stats_andebol": stats_andebol,
+		"eventos": eventos,
 		"jogador": jogador
 	}
 
