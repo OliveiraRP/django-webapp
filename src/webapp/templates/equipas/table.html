@@ -13,7 +13,7 @@
 	<tbody>
 		{% for e in objects_equipas %}
 		<tr>
-			<td>{{ e.nome }}</td>
+			<td><a href="{{ e.equipa_id }}">{{ e.nome }}</a></td>
 			<td>{{ e.faixa_etaria.designacao }}</td>
 			<td>{{ e.modalidade.designacao }}</td>
 			<td>{{ e.genero.designacao }}</td>

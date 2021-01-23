@@ -50,6 +50,19 @@ def profile_jogador_view(request, id):
 		elif equipa.modalidade == 'Andebol':
 			stats_andebol = Convocatoria.objects.raw("SELECT * FROM get_estatisticas_jogador_andebol(" + str(id) + ")")
 
+	with connection.cursor() as cursor:
+		cursor.execute("SELECT * FROM get_idade("+str(id)+")")
+		idade = cursor.fetchone()[0]
+		cursor.execute("SELECT * FROM get_total_jogos_jogador("+str(id)+")")
+		total_jogos = cursor.fetchone()[0]
+		cursor.execute("SELECT * FROM get_total_golos("+str(id)+")")
+		total_golos = cursor.fetchone()[0]
+		cursor.execute("SELECT * FROM get_total_carama("+str(id)+")")
+		total_carama = cursor.fetchone()[0]
+		cursor.execute("SELECT * FROM get_total_carver("+str(id)+")")
+		total_carver = cursor.fetchone()[0]
+
+
 	# List eventos
 	eventos = Evento.objects.raw("SELECT * FROM get_eventos_jogador(" + str(id) + ")")
 
@@ -65,6 +78,11 @@ def profile_jogador_view(request, id):
 		"stats_voleibol": stats_voleibol,
 		"stats_tenis": stats_tenis,
 		"stats_andebol": stats_andebol,
+		"idade": idade,
+		"total_golos": total_golos,
+		"total_carver": total_carver,
+		"total_carama": total_carama,
+		"total_jogos": total_jogos,
 		"eventos": eventos,
 		"jogador": jogador
 	}

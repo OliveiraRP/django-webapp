@@ -19,7 +19,7 @@ from django.urls import path
 from pages.views import index_view
 from campeonatos.views import table_campeonatos_view
 from jogos.views import table_jogos_view
-from equipas.views import table_equipas_view
+from equipas.views import table_equipas_view, team_equipas_view
 from jogadores.views import table_jogadores_view, profile_jogador_view, new_jogador_view
 
 urlpatterns = [
@@ -27,6 +27,7 @@ urlpatterns = [
 	path('campeonatos/', table_campeonatos_view, name='campeonatos'),
     path('jogos/', table_jogos_view, name='jogos'),
     path('equipas/', table_equipas_view, name='equipas'),
+    path('equipas/<int:id>', team_equipas_view, name='equipa_equipas'),
     path('jogadores/', table_jogadores_view, name='jogadores'),
     path('jogadores/<int:id>', profile_jogador_view, name="perfil_jogador"),
     path('jogadores/novo', new_jogador_view, name="novo_jogador"),

@@ -4,7 +4,7 @@
 
 <p class="j1">{{ jogador.nome }}</p>
 
-<p class="j2">{{ jogador.genero }} | {{ jogador.datanasc }}</p>
+<p class="j2">{{ jogador.genero }} | {{ jogador.datanasc }} | {{ idade }} anos</p>
 
 
 <h3>Equipas:</h3><br>
@@ -13,7 +13,7 @@
 		Este jogador não joga em nenhuma equipa
 	{% endif %}
 	{% for equipa in lista_equipas %}
-		<li><b>{{ equipa.modalidade }}:</b> {{ equipa.equipa_nome }}</li>
+		<li><b>{{ equipa.modalidade }}:</b> <a href="/equipas/{{ equipa.equipa_id }}">{{ equipa.equipa_nome }}</a></li>
 	{% endfor %}
 </ul>
 
@@ -42,6 +42,14 @@
 		<td>{{ stat.num_car_ver }}</td>
   	</tr>
 	{% endfor %}
+	<tr>
+		<td></td>
+		<td></td>
+		<td><b>{{ total_jogos }}</b></td>
+		<td><b>{{ total_golos }}</b></td>
+		<td><b>{{ total_carama }}</b></td>
+		<td><b>{{ total_carver }}</b></td>
+  	</tr>
 </table>
 {% endif %}
 

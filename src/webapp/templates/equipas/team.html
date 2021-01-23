@@ -1,0 +1,83 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+<p class="j1">{{ equipa.nome }}</p>
+
+<p class="j2">{{ equipa.modalidade.designacao }} | {{ equipa.faixa_etaria.designacao }} | {{ equipa.genero.designacao }}</p>
+
+
+<h3>Plantel:</h3><br>
+<ul class="j2">
+	{% if not plantel %}
+		Esta equipa não tem nenhum jogador
+	{% endif %}
+	{% for jog in plantel %}
+		<li><a href="/jogadores/{{ jog.jogador.jogador_id }}">{{ jog.jogador.nome }}</a></li>
+	{% endfor %}
+</ul>
+
+
+<h3>Últimos Resultados:</h3><br>
+<table class="container">
+  	<tr>
+ 		<th>Dia</th>
+ 		<th>Campeonato</th>
+    	<th>Resultado</th>
+	 	<th>Tipo de Resultado</th>
+	 	<th>Tempo de Jogo</th>
+	 	<th>Campo</th>
+	 	<th>Espetadores</th>
+  	</tr>
+  	{% for res in ultimos_resultados %}
+	<tr>
+		<td>{{ res.diajogo }}</td>
+		<td>{{ res.campeonato }}</td>
+		<td>{{ res.resultado }}</td>
+		{% if res.tipo_res == 1 %}
+			<td>Vitória</td>
+		{% elif res.tipo_res == 2 %}
+			<td>Empate</td>
+		{% elif res.tipo_res == 3 %}
+			<td>Derrota</td>
+		{% endif %}
+		<td>{{ res.tempojogo }}</td>
+		<td>{{ res.campo }}</td>
+		<td>{{ res.espetadores }}</td>
+  	</tr>
+	{% endfor %}
+</table>
+
+
+<h3>Top 5 - Mais Utilizados:</h3><br>
+<table class="container">
+  	<tr>
+ 		<th>Jogador</th>
+    	<th>Nº de Jogos</th>
+  	</tr>
+  	{% for uti in mais_utilizados %}
+	<tr>
+		<td>{{ uti.nome }}</td>
+		<td>{{ uti.num_jogos }}</td>
+  	</tr>
+	{% endfor %}
+</table>
+
+
+<h3>Top 5 - Melhores Marcadores:</h3><br>
+<table class="container">
+  	<tr>
+ 		<th>Jogador</th>
+ 		<th>Nº de Golos</th>
+    	<th>Nº de Jogos</th>
+  	</tr>
+  	{% for mar in melhores_marcadores %}
+	<tr>
+		<td>{{ mar.nome }}</td>
+		<td>{{ mar.num_golos }}</td>
+		<td>{{ mar.num_jogos }}</td>
+  	</tr>
+	{% endfor %}
+</table>
+
+{% endblock %}
