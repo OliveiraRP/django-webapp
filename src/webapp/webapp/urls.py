@@ -16,16 +16,18 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from pages.views import index_view
+from pages.views import index_view, changelog_view
 from campeonatos.views import table_campeonatos_view
-from jogos.views import table_jogos_view
+from jogos.views import table_jogos_view, game_jogos_view
 from equipas.views import table_equipas_view, team_equipas_view
 from jogadores.views import table_jogadores_view, profile_jogador_view, new_jogador_view
 
 urlpatterns = [
 	path('', index_view, name='index'),
+    path('changelog/', changelog_view, name='changelog'),
 	path('campeonatos/', table_campeonatos_view, name='campeonatos'),
     path('jogos/', table_jogos_view, name='jogos'),
+    path('jogos/<int:id>', game_jogos_view, name='jogo_jogos'),
     path('equipas/', table_equipas_view, name='equipas'),
     path('equipas/<int:id>', team_equipas_view, name='equipa_equipas'),
     path('jogadores/', table_jogadores_view, name='jogadores'),

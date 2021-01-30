@@ -4,23 +4,27 @@
 <table class="container">
 	<thead>
 		<tr>
-			<th><h1>Campeonato</h1></th>
+			<th><h1>Data</h1></th>
 			<th><h1>Equipas</h1></th>
+			<th><h1>Resultado</h1></th>
+			<th><h1>Campeonato</h1></th>
 			<th><h1>Campo</h1></th>
-			<th><h1>Tempo de Jogo</h1></th>
 			<th><h1>Espetadores</h1></th>
-			<th><h1>Dia do Jogo</h1></th>
+			<th><h1>Melhor Marcador</h1></th>
+			<th><h1>Mais Ações Disciplinares</h1></th>
 		</tr>
 	</thead>
 	<tbody>
 		{% for j in objects_jogos %}
 		<tr>
+			<td><a href="{{ j.jogo_id }}">{{ j.diajogo }}</a></td>
+			<td>{{ j.equipa1 }} <b>VS</b> {{ j.equipa2}}</td>
+			<td>{{ j.result }}</td>
 			<td>{{ j.campeonato.nome }}</td>
-			<td>Null VS Null</td>
 			<td>{{ j.campo }}</td>
-			<td>{{ j.tempojogo }}</td>
 			<td>{{ j.espetadores }}</td>
-			<td>{{ j.diajogo }}</td>
+			<td>{{ j.melhor_marcador }}</td>
+			<td>{{ j.mais_acoes_disciplinares }}</td>
 		</tr>
 		{% endfor %}
 	</tbody>

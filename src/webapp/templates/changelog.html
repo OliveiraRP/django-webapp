@@ -1,0 +1,38 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+<h3> Alterações na base de dados </h3>
+
+<table class="container">
+	<thead>
+		<tr>
+			<th><h1>Hora</h1></th>
+			<th><h1>Tipo</h1></th>
+			<th><h1>Objeto</h1></th>
+			<th><h1>ID Linha</h1></th>
+			<th><h1>Linha antiga</h1></th>
+			<th><h1>Linha nova</h1></th>
+			<th><h1>Utilizador</h1></th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for l in log %}
+		<tr>
+			<td>{{ l.event_time }}</td>
+			<td>{{ l.event_type }}</td>
+			<td>{{ l.object_type }}</td>
+			<td>{{ l.row_id }}</td>
+			<td>{{ l.old_row }}</td>
+			<td>{{ l.new_row }}</td>
+			<td>{{ l.user }}</td>
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>
+
+<form method="POST"> {% csrf_token %}
+	<input class="modelForm" type='submit' value='Repôr'/>
+</form>
+
+{% endblock %}

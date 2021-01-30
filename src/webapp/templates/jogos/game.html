@@ -1,0 +1,40 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+
+{% for r in result %}
+	<p class="j1">{{ r.equipa1 }} <b>VS</b> {{ r.equipa2 }}</p>
+{% endfor %}
+
+<p class="j2">{{ jogo.diajogo }}</p>
+
+<h3>Vencedor:</h3>
+<p class="j2">
+{% for r in result %}
+{% if r.vencedor == 1 %}{{ r.equipa1 }}{% endif %}
+{% if r.vencedor == 2 %}Jogo Empatado{% endif %}
+{% if r.vencedor == 3 %}{{ r.equipa2 }}{% endif %}
+{% endfor %}
+</p>
+
+
+<h3>Eventos:</h3><br>
+<table class="container">
+  	<tr>
+  		<th>Parte do Jogo</th>
+ 		<th>Tempo</th>
+    	<th>Evento</th>
+    	<th>Jogador</th>
+  	</tr>
+  	{% for ev in eventos %}
+	<tr>
+		<td>{{ ev.parte_jogo.designacao }}</td>
+		<td>{{ ev.tempo }}</td>
+		<td>{{ ev.tipo_evento.designacao }}</td>
+		<td>{{ ev.jogador.nome }}</td>
+  	</tr>
+	{% endfor %}
+</table>
+
+{% endblock %}
