@@ -111,20 +111,12 @@
 	<tr>
 		<th>Ano</th>
 		<th>Partidas disputadas</th>
-		<th>Vitórias</th>
-		<th>Derrotas</th>
-		<th>Points ganhos</th>
-		<th>Games ganhos</th>
 		<th>Sets ganhos</th>
 	</tr>
 	{% for stat in stats_tenis %}
 	<tr>
 		<td>{{ stat.ano }}</td>
 		<td>{{ stat.num_jogos }}</td>
-		<td>{{ stat.num_vitorias }}</td>
-		<td>{{ stat.num_derrotas }}</td>
-		<td>{{ stat.num_points }}</td>
-		<td>{{ stat.num_games }}</td>
 		<td>{{ stat.num_sets }}</td>
 	</tr>
 	{% endfor %}
@@ -140,18 +132,16 @@
  		<th>Ano</th>
  		<th>Equipa</th>
 		<th>Partidas disputadas</th>
-		<th>Golos</th>
-		<th>Cartões Amarelos</th>
-		<th>Cartões Vermelhos</th>
+		<th>Pontos</th>
+		<th>Exclusões</th>
   	</tr>
   	{% for stat in stats_andebol %}
 	<tr>
 		<td>{{ stat.ano }}</td>
 		<td>{{ stat.equipa.nome }}</td>
 		<td>{{ stat.num_jogos }}</td>
-		<td>{{ stat.num_golos }}</td>
-		<td>{{ stat.num_car_ama }}</td>
-		<td>{{ stat.num_car_ver }}</td>
+		<td>{{ stat.num_pontos }}</td>
+		<td>{{ stat.num_exclusoes }}</td>
   	</tr>
 	{% endfor %}
 </table>

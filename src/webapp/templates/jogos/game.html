@@ -5,17 +5,18 @@
 
 {% for r in result %}
 	<p class="j1">{{ r.equipa1 }} <b>VS</b> {{ r.equipa2 }}</p>
+	<h3>Resultado: <b>{{ r.result }}</b></h3>
 {% endfor %}
 
 <p class="j2">{{ jogo.diajogo }}</p>
 
 <h3>Vencedor:</h3>
-<p class="j2">
+<p class="j2"><b>
 {% for r in result %}
 {% if r.vencedor == 1 %}{{ r.equipa1 }}{% endif %}
 {% if r.vencedor == 2 %}Jogo Empatado{% endif %}
 {% if r.vencedor == 3 %}{{ r.equipa2 }}{% endif %}
-{% endfor %}
+{% endfor %}</b>
 </p>
 
 
@@ -36,5 +37,9 @@
   	</tr>
 	{% endfor %}
 </table>
+
+<form method="POST"> {% csrf_token %}
+	<input class="modelForm" type='submit' value='Trocar jogadores com mais/menos ações disciplinares'/>
+</form>
 
 {% endblock %}

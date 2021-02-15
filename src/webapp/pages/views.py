@@ -29,3 +29,16 @@ def changelog_view(request, *args, **kwargs):
 	}
 
 	return render(request, "changelog.html", context)
+
+
+def xml_view(request, *args, **kwargs):
+
+	with connection.cursor() as cursor:
+		cursor.execute("SELECT * FROM xml_view")
+		xml = cursor.fetchall()
+
+	context = {
+	'xml': xml
+	}
+
+	return render(request, "xml.html", context)

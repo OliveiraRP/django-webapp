@@ -1,0 +1,176 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+<p class="j1"><b>Vencedor: </b>{{ vencedor.nome }}</p>
+
+{% if campeonato.modalidade_id == 1 %}
+<b style="margin-left:10%">Classificação</b>
+<table class="container">
+  	<tr>
+ 		<th>Equipa</th>
+    	<th>JD</th>
+	 	<th>V</th>
+	 	<th>E</th>
+	 	<th>D</th>
+	 	<th>GM</th>
+	 	<th>GS</th>
+	 	<th>DG</th>
+	 	<th>Pontos</th>
+  	</tr>
+  	{% for c in classific %}
+	<tr>
+		<td>{{ c.nome }}</td>
+		<td>{{ c.jg }}</td>
+		<td>{{ c.v }}</td>
+		<td>{{ c.e }}</td>
+		<td>{{ c.d }}</td>
+		<td>{{ c.gm }}</td>
+		<td>{{ c.gs }}</td>
+		<td>{{ c.dg }}</td>
+		<td><b>{{ c.pnt }}</b></td>
+  	</tr>
+	{% endfor %}
+</table>
+{% endif %}
+
+{% if campeonato.modalidade_id == 2 or campeonato.modalidade_id == 5 %}
+<b style="margin-left:10%">Classificação</b>
+<table class="container">
+  	<tr>
+ 		<th>Equipa</th>
+    	<th>JD</th>
+	 	<th>V</th>
+	 	<th>D</th>
+	 	<th>PM</th>
+	 	<th>PS</th>
+	 	<th>DP</th>
+	 	<th>Pontos</th>
+  	</tr>
+  	{% for c in classific %}
+	<tr>
+		<td>{{ c.nome }}</td>
+		<td>{{ c.jg }}</td>
+		<td>{{ c.v }}</td>
+		<td>{{ c.d }}</td>
+		<td>{{ c.pm }}</td>
+		<td>{{ c.ps }}</td>
+		<td>{{ c.dp}}</td>
+		<td><b>{{ c.pnt }}</b></td>
+  	</tr>
+	{% endfor %}
+</table>
+{% endif %}
+
+{% if campeonato.modalidade_id == 3 %}
+<b style="margin-left:10%">Classificação</b>
+<table class="container">
+  	<tr>
+ 		<th>Equipa</th>
+    	<th>JD</th>
+	 	<th>V</th>
+	 	<th>E</th>
+	 	<th>D</th>
+	 	<th>GM</th>
+	 	<th>GS</th>
+	 	<th>DG</th>
+	 	<th>Pontos</th>
+  	</tr>
+  	{% for c in classific %}
+	<tr>
+		<td>{{ c.nome }}</td>
+		<td>{{ c.jg }}</td>
+		<td>{{ c.v }}</td>
+		<td>{{ c.e }}</td>
+		<td>{{ c.d }}</td>
+		<td>{{ c.gm }}</td>
+		<td>{{ c.gs }}</td>
+		<td>{{ c.dg }}</td>
+		<td><b>{{ c.pnt }}</b></td>
+  	</tr>
+	{% endfor %}
+</table>
+{% endif %}
+
+
+{% if campeonato.modalidade_id == 4 %}
+<b style="margin-left:10%">Classificação</b>
+<table class="container">
+  	<tr>
+  		<th>Equipa</th>
+ 		<th>Jogador</th>
+    	<th>JD</th>
+	 	<th>V</th>
+	 	<th>D</th>
+	 	<th>Lugar</th>
+  	</tr>
+  	{% for c in classific %}
+	<tr>
+		<td>{{ c.nome }}</td>
+		<td>{{ c.nm }}</td>
+		<td>{{ c.jg }}</td>
+		<td>{{ c.v }}</td>
+		<td>{{ c.d }}</td>
+		<td>{{ c.lugar }}</td>
+  	</tr>
+	{% endfor %}
+</table>
+{% endif %}
+
+{% if top_marc %}
+<b style="margin-left:10%">TOP 5 - Melhores Marcadores</b>
+<table class="container">
+  	<tr>
+ 		<th>Jogador</th>
+    	<th>Nº Golos</th>
+	 	<th>Nº Jogos</th>
+  	</tr>
+  	{% for t in top_marc %}
+	<tr>
+		<td>{{ t.nome }}</td>
+		<td>{{ t.golos }}</td>
+		<td>{{ t.jogos }}</td>
+  	</tr>
+	{% endfor %}
+</table>
+{% endif %}
+
+{% if top_adfut %}
+<b style="margin-left:10%">TOP 5 - Ações Disciplinares</b>
+<table class="container">
+  	<tr>
+ 		<th>Jogador</th>
+    	<th>Nº Cartões Amarelos</th>
+	 	<th>Nº Cartões Vermelhos</th>
+	 	<th>Nº Jogos</th>
+  	</tr>
+  	{% for t in top_adfut %}
+	<tr>
+		<td>{{ t.nome }}</td>
+		<td>{{ t.ca }}</td>
+		<td>{{ t.cv }}</td>
+		<td>{{ t.jogos }}</td>
+  	</tr>
+	{% endfor %}
+</table>
+{% endif %}
+
+{% if top_ad %}
+<b style="margin-left:10%">TOP 5 - Ações Disciplinares</b>
+<table class="container">
+  	<tr>
+ 		<th>Jogador</th>
+    	<th>Nº Exclusões</th>
+	 	<th>Nº Jogos</th>
+  	</tr>
+  	{% for t in top_ad %}
+	<tr>
+		<td>{{ t.nome }}</td>
+		<td>{{ t.exclusao }}</td>
+		<td>{{ t.jogos }}</td>
+  	</tr>
+	{% endfor %}
+</table>
+{% endif %}
+
+{% endblock %}

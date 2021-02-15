@@ -14,7 +14,7 @@
 	<tbody>
 		{% for c in objects_campeonatos %}
 		<tr>
-			<td>{{ c.nome }}</td>
+			<td><a href="{{ c.campeonato_id }}"> {{ c.nome }} </a></td>
 			<td>{{ c.epoca }}</td>
 			<td>{{ c.modalidade.designacao }}</td>
 			<td>{{ c.datainicio }}</td>

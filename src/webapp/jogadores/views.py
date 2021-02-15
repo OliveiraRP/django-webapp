@@ -14,7 +14,7 @@ def table_jogadores_view(request, *args, **kwargs):
 		objects_jogadores = Jogador.objects.raw("SELECT * FROM search_jogador('" + request.POST['nome'] + "')")
 
 	else:
-		objects_jogadores = Jogador.objects.all()
+		objects_jogadores = Jogador.objects.raw("SELECT * FROM list_jogadores")
 
 	context = {
 		'objects_jogadores': objects_jogadores,

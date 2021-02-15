@@ -1,0 +1,12 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+<p class="j1">XML</p>
+<h3> Jogadores pertencentes ao último campeonato de Futebol: </h3>
+
+{% for x in xml %}
+{{ x }}
+{% endfor %}
+
+{% endblock %}
